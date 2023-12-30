@@ -67,7 +67,7 @@ export const findTopRankedPlayForHand = (hand: Card[]): Result => {
         }
     }
     return {
-        play: Play.Discard_everything,
+        play: Play['' + Play.Discard_everything],
         discard: hand
     }
 }
