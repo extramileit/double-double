@@ -17,7 +17,7 @@ export const isHandMatchingPlayHand = (hand: Card[], playHand: Card[]): Matching
     const playHandSet = new Set<Card>(playHand);
     for (const handCard of hand) {
         var isMatchFound = false;
-        for (const playCard of playHandSet) {
+        for (const playCard of Array.from(playHandSet)) {
             if (isCardMatch(handCard, playCard)) {
                 playHandSet.delete(playCard);
                 discardSet.delete(handCard);
