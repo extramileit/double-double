@@ -6,8 +6,8 @@ const isNumeric = (val: string): boolean => {
     return !isNaN(Number(val));
 }
 
-const isCardMatch = (card1: Card, card2: Card): boolean => {
-    return card1.suit == card2.suit && card1.rank == card2.rank;
+const isCardMatch = (card1: Card, playCard: Card): boolean => {
+    return card1.rank === playCard.rank && (playCard.suit === 0 || (playCard.suit === card1.suit));
 }
 
 type MatchingPlayResult = {isMatch: boolean, discard: Card[]};
@@ -17,7 +17,7 @@ export const isHandMatchingPlayHand = (hand: Card[], playHand: Card[]): Matching
     const playHandSet = new Set<Card>(playHand);
     for (const handCard of hand) {
         var isMatchFound = false;
-        for (const playCard of playHand) {
+        for (const playCard of playHandSet) {
             if (isCardMatch(handCard, playCard)) {
                 playHandSet.delete(playCard);
                 discardSet.delete(handCard);
@@ -45,7 +45,6 @@ const isHandMatchingPlayHands = (hand: Card[], playHands: Card[][]): MatchingPla
 export type Result = { play: Play; discard: Card[] };
 
 export const findTopRankedPlayForHand = (hand: Card[]): Result => {
-    const discardHands = new Set(hand);
 
     for (const p in Play) {
         const value = Play[p]

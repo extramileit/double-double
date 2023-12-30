@@ -24,11 +24,11 @@ export default function Home() {
         let card5 = event.target.card5.value;
 
         let hand = [];
-        hand[0] = card1;
-        hand[1] = card2;
-        hand[2] = card3;
-        hand[3] = card4;
-        hand[4] = card5;
+        hand[0] = card1.toUpperCase();
+        hand[1] = card2.toUpperCase();
+        hand[2] = card3.toUpperCase();
+        hand[3] = card4.toUpperCase();
+        hand[4] = card5.toUpperCase();
         const cardsInHand: Card[] = hand.map((cardString) => {
             return stringToCard(cardString);
         });
