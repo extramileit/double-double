@@ -7,7 +7,7 @@ const isNumeric = (val: string): boolean => {
 }
 
 const isCardMatch = (card1: Card, playCard: Card): boolean => {
-    return card1.rank === playCard.rank && (playCard.suit === 0 || (playCard.suit === card1.suit));
+    return (playCard.rank === 0 || (playCard.rank === card1.rank)) && (playCard.suit === 0 || (playCard.suit === card1.suit));
 }
 
 type MatchingPlayResult = {isMatch: boolean, discard: Card[]};
