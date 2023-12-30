@@ -77,10 +77,10 @@ export const getDiscardHandsOutput = (discardCards: Card[]) : String => {
     if (discardCardsCount === 0) {
         return 'keep all cards!';
     }
-    let output = 'discard:\n';
     if (discardCardsCount === 5) {
-        return 'all';
+        return '';
     }
+    let output = 'discard:\n';
     discardCards.forEach((card, index) => {
         output += cardToString(card);
         if (index < (discardCardsCount - 1)) {
