@@ -63,8 +63,6 @@ export const findTopRankedPlayForHand = (hand: Card[]): Result => {
                     play: Play[value],
                     discard: matchingPlayResult.discard
                 }
-            } else {
-                // console.log('no match found');
             }
         }
     }
@@ -80,6 +78,9 @@ export const getDiscardHandsOutput = (discardCards: Card[]) : String => {
         return 'keep all cards!';
     }
     let output = 'discard:\n';
+    if (discardCardsCount === 5) {
+        return 'all';
+    }
     discardCards.forEach((card, index) => {
         output += cardToString(card);
         if (index < (discardCardsCount - 1)) {
@@ -89,7 +90,7 @@ export const getDiscardHandsOutput = (discardCards: Card[]) : String => {
     return output;
 }
 
-const hand = ['5D', 'AC', 'AS', 'AD', 'AH'];
+const hand = ['5D', '3H', '8S', '6D', '9C'];
 console.log('hand: ' + hand);
 
 
